@@ -48,9 +48,9 @@ Furthermore, our exploratory approach based on collaborative networks can easily
 
 ## The Team
 
-* :woman: **Mariana O. S. Silva** page[page1]
-* :woman: **Laís M. A. Rocha** page[page2]
-* :woman: **Mirella M. Moro** page[page3]
+* :woman: **Mariana O. S. Silva** [page][page1]
+* :woman: **Laís M. A. Rocha** [page][page2]
+* :woman: **Mirella M. Moro** [page][page3]
 
 [page1]: http://homepages.dcc.ufmg.br/~mariana.santos/
 [page2]: http://homepages.dcc.ufmg.br/~laismota/
