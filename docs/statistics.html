@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <title>Statistical Analysis</title>    
+    <meta name="description" content="COMUSIC. an ongoing project created with the aim of studying patterns and characteristics of musical collaborative networks."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Mariana O. S. Silva"/>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/highcharts.js"></script>
+    <script src="js/modules/data.js"></script>
+    <script src="js/modules/heatmap.js"></script>
+    <script src="js/modules/exporting.js"></script>
+
+    <script src="js/formattable_widget.js"></script>
+
+    <script src="js/plotlyjs-bundle.js"></script>
+    <script src="js/boxplot/pop/figure_pop.js"></script>
+    <script src="js/boxplot/foll/figure_foll.js"></script>
+
+    <!-- favicon -->
+    <link href="img/favicon.png" rel=icon>
+
+    <!-- web-fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/styles-merged.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <!-- START: nav -->  
+  <div class="probootstrap-loader"></div>
+  <header class="probootstrap-header">
+    <div class="container">
+        <a href="index.html" class="probootstrap-logo">Comusic.</a>        
+        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+        <div class="mobile-menu-overlay"></div>
+        <nav class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="network.html">Network</a></li>
+            <li><a href="visualizations.html">Visualizations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="extra-text visible-xs"> 
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+          </div>
+        </nav>
+    </div>
+  </header>
+  <!-- END: nav -->
+  
+  <section class="probootstrap-slider flexslider">
+    <ul class="slides">
+      <li style="background-image: url(img/statistics.jpg);" class="overlay2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-20 text-center">
+            <div class="slides-text probootstrap-animate" data-animate-effect="fadeIn">
+              <h2><strong>Statistical</strong> Analysis</h2>
+            </div>
+          </div>
+        </div>
+        <a href="#section-intro" class="scroll" alt=""></a>
+      </div>
+    </ul>
+  </section> 
+  <!-- END: slider  -->
+
+  <section class="probootstrap-section probootstrap-section-lighter" id="section-intro">
+    <div class="container">
+      <div class="row overlap">
+        <div class="col-md-12 text-center probootstrap-animate">
+          <h2 style="font-size: 2em;color: #50364f"><b>Statistical Analysis</b></h2>          
+          <h3>After identifying the collaborations profiles present in the network, we verify if there is a correlation between an artist's success and his/her collaboration behavior. This analysis took place in three steps:</h3> 
+        </div>
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+            <div class="icon">
+              <i class="icon-line-graph"></i>
+            </div>
+            <div class="text">
+              <h3 class="heading">Normality Test</h3>
+              <p>We use the normality test of Shapiro-Wilk to verify is the data follow a normal distribution</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+            <div class="icon">
+              <i class="icon-bar-graph"></i>
+            </div>
+            <div class="text">
+              <h3 class="heading">Correlation Test</h3>
+              <p>We apply the correlation test of Pearson, Spearman and Kendall and compute the t-test</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+            <div class="icon">
+              <i class="icon-sound-mix"></i>
+            </div>
+            <div class="text">
+              <h3 class="heading">Box Plot</h3>
+              <p>We plot box plots of each cluster in relation to the success metrics<br><br>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center section-heading probootstrap-animate">
+          <h2>Normality Test</h2>
+          <p>We apply the Shapiro-Wilk test with the null hypothesis that the distributions are Normal.<br>
+          <mark><dfn>All p-values are much smaller than the significance level of &alpha; = 0.05</dfn></mark></p>
+        </div>
+        <div class="col-md-12 text-center probootstrap-animate">
+          <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th style="text-align:center"> Sample </th>  
+              <th style="text-align:center"> Statistic </th>  
+              <th style="text-align:center"> p-value </th>  
+              <th style="text-align:center"> Normal </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:center"> Popularity </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #add8e6">0.93788</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fefefe">5.269e-11</span> </td>   
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> Followers </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c4e2ed">0.6737</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">2.2e-16</span> </td>   
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> Degree </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #badeea">0.78467</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">2.2e-16</span> </td>   
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> Weighted Degree </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #bbdfea">0.76878</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">2.2e-16</span> </td>   
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> eccentricity </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #bddfeb">0.74696</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">2.2e-16</span> </td>   
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> Closeness </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #badeea">0.78364</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">2.2e-16</span> </td>   
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>        
+              <td style="text-align:center"> Betweeness </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cbe6ef">0.58553</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">2.2e-16</span> </td>   
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>        
+              <td style="text-align:center"> Eigencentrality </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c4e3ed">0.66979</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">2.2e-16</span> </td>   
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>        
+              <td style="text-align:center"> Clustering </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b2dae7">0.87115</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">2.2e-16</span> </td> 
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+
+     <!-- END OF ROW -->
+      <hr />
+
+      <div class="row">
+        <div class="col-md-12 text-center section-heading probootstrap-animate">
+          <h2>Correlation Test</h2>
+          <p>We apply the statistical correlation evaluation considering the null hypothesis that there is a correlation
+between the variables.</p>
+          <h3 style="color: #6090b3">Popularity of Spotify vs. Topological Metrics</h3>
+        </div>        
+        <div class="col-md-12 text-center probootstrap-animate">
+          <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th style="text-align:center"> Metric </th>  
+              <th style="text-align:center"> Pearson </th>  
+              <th style="text-align:center"> Spearman </th>  
+              <th style="text-align:center"> Kendall </th>  
+              <th style="text-align:center"> Correlated </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:center"> Degree </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #add8e6">0.51</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #add8e6">0.51</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c3e2ec">0.38</span> </td>  
+              <td style="text-align:center"> <span style="color: lightgreen"> <i class="icon-checkmark"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> Weighted Degree </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b2dae7">0.48</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b5dce8">0.46</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cce6ef">0.33</span> </td>  
+              <td style="text-align:center"> <span style="color: lightgreen"> <i class="icon-checkmark"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> eccentricity </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cfe8f0">0.31</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e1f0f5">0.21</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #eaf5f8">0.16</span> </td>  
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> Closeness </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cce6ef">0.33</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b3dbe8">0.47</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cae6ef">0.34</span> </td>  
+              <td style="text-align:center"> <span style="color: lightgreen"> <i class="icon-checkmark"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> Betweeness </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b9dde9">0.44</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #add8e6">0.51</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c3e2ec">0.38</span> </td>  
+              <td style="text-align:center"> <span style="color: lightgreen"> <i class="icon-checkmark"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> Eigencentrality </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #badeea">0.43</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b0d9e7">0.49</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c8e5ee">0.35</span> </td>  
+              <td style="text-align:center"> <span style="color: lightgreen"> <i class="icon-checkmark"></i></span> </td>
+            </tr>
+            <tr>        
+              <td style="text-align:center"> Clustering </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">0.04</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f2f9fb">0.11</span> </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f9fcfd">0.07</span> </td>  
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td> 
+            </tr>
+          </tbody>
+        </table>
+      </div>
+        <div class="col-md-12 text-center section-heading probootstrap-animate">
+          <h3 style="color: #6090b3">Number of Followers in Spotify vs. Topological Metrics</h3>
+        </div>  
+        <div class="col-md-12 text-center probootstrap-animate">
+          <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th style="text-align:center"> Metric </th>  
+              <th style="text-align:center"> Pearson </th>  
+              <th style="text-align:center"> Spearman </th>  
+              <th style="text-align:center"> Kendall </th>  
+              <th style="text-align:center"> Correlated </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:center"> Degree </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cce6ef">0.20</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d1e9f1">0.18</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #dff0f5">0.13</span> </td> 
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> Weighted Degree </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #bde0eb">0.25</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #add8e6">0.31</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c6e4ed">0.22</span> </td>   
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> eccentricity </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e8f4f8">0.10</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c9e5ee">0.21</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">0.02</span> </td>   
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> Closeness </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ddeef4">0.14</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7ecf2">0.16</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e5f2f7">0.11</span> </td> 
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> Betweeness </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cee8f0">0.19</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c9e5ee">0.21</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #daedf3">0.15</span> </td>   
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>
+              <td style="text-align:center"> Eigencentrality </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7ecf2">0.16</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #daedf3">0.15</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e8f4f8">0.10</span> </td> 
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+            <tr>        
+              <td style="text-align:center"> Clustering </td>  
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f9fcfd">0.04</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f0f8fa">0.07</span> </td>   
+              <td style="text-align:right"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f6fafc">0.05</span> </td>  
+              <td style="text-align:center"> <span style="color: lightpink"> <i class="icon-cross2"></i></span> </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>      
+      </div>
+
+      <!-- END OF ROW -->
+
+      <div class="row">
+        <div class="col-md-12 text-center section-heading probootstrap-animate">
+          <h3 style="color: #6090b3">Correlation Matrix</h3>
+          <div id="container" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+
+    <!-- END OF ROW -->
+      <hr />
+      <div class="row">
+        <div class="col-md-12 text-center section-heading probootstrap-animate">
+          <h2>Box Plot</h2>
+          <p>The box plots show an analysis for each cluster related to the success metrics (popularity and number of followers).</p>
+          <h3 style="color: #6090b3">Box Plot of popularity per cluster</h3>
+          <div id="91e0a0ab-61b3-4ca6-997b-a72d0a69422b" style="width: 100%; height: 500px;" class="plotly-graph-div"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center section-heading probootstrap-animate">
+          <h3 style="color: #6090b3">Box Plot of followers per cluster</h3>
+          <div id="df9ac2ac-9293-4f0b-855e-292257c9a4f1" style="width: 100%; height: 500px;" class="plotly-graph-div"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="probootstrap-footer probootstrap-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget">
+            <h3>Comusic.</h3>
+            <p>an ongoing project created with the aim of 
+          studying patterns and characteristics of <b>musical collaborative networks.</b></p>
+            <p><a href="about.html" class="btn btn-ghost btn-ghost-white btn-sm">Read more</a></p>
+          </div> 
+        </div>
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h3>Quick Links</h3>
+            <ul class="stack-link">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="network.html">Network</a></li>
+              <li><a href="visualizations.html">Visualizations</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h3>Visualizations</h3>
+            <ul class="stack-link">
+              <li><a href="billboard.html">Billboard Charts</a></li>
+              <li><a href="collab.html">Collaboration Profiles</a></li>
+              <li><a href="cluster.html">Results of Clustering</a></li>
+              <li><a href="statistics.html">Statistical Analysis</a></li>
+            </ul>
+          </div> 
+        </div> 
+      </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <ul class="probootstrap-social">
+              <li><a href="http://www.labcsx.dcc.ufmg.br/doku.php?id=start"><img src="img/logo_lab.svg" alt="labcsx" width="80px" height="100%" /></a></li><li><a href="https://www.dcc.ufmg.br/"><img src="img/dcc.svg" alt="dcc" width="7%"/></a></li>
+              <li><a href="https://ufmg.br/"><img src="img/ufmg.svg" alt="ufmg" width="80px" height="100%"/></a></li>
+              <li><a href="http://www.cnpq.br/"><img src="img/cnpq.svg" alt="cnpq" width="80px" height="100%"/></a></li>
+              <li><a href="http://www.fapemig.br/"><img src="img/fapemig.svg" alt="fapemig" width="70px" height="100%"/></a></li>
+            </ul> 
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="probootstrap-footer">
+            <p>&copy; 2017 <a href="https://uicookies.com/">uiCookies:Virb</a>. Designed by <a href="https://uicookies.com/">uicookies.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop" alt=""><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+  <script>
+    (function($) {
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'heatmap',
+                backgroundColor: 'transparent',
+                style: {
+                    position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+                },
+                zoomType: 'xy'
+            },
+
+            credits: {
+              enabled: false
+            },
+
+            plotOptions: {
+              series: {
+                turboThreshold: 0
+              },
+              treemap: {
+                layoutAlgorithm: 'squarified'
+              }
+            },
+
+            title: {
+                text: 'Pearson\'s Correlation (r)'
+            },
+
+            xAxis: {
+              categories: ["popularity", "followers", "degree", "weighted.degree", "eccentricity", "closeness", "betweeness", "clustering", "eigencentrality"],
+              title: null
+            },
+
+            yAxis: {
+              categories: ["popularity", "followers", "degree", "weighted.degree", "eccentricity", "closeness", "betweeness", "clustering", "eigencentrality"],
+              title: null
+            },
+
+            colorAxis: {/*
+              auxarg: true,*/
+              min: -1,
+              max: 1,
+              stops: [
+                  [0, "#9BEFE0"],
+                  [0.111111111111111, "#86DAD9"],
+                  [0.222222222222222, "#72C5D2"],
+                  [0.333333333333333, "#68B0C7"],
+                  [0.444444444444444, "#629AB9"],
+                  [0.555555555555556, "#5F85A8"],
+                  [0.666666666666667, "#5E7094"],
+                  [0.777777777777778, "#5C5C7F"],
+                  [0.888888888888889, "#564967"],
+                  [1, "#50364F"]
+              ]
+            },
+
+            legend: {
+              /*enabled: true*/
+              align: 'right',
+              layout: 'vertical',
+              margin: 0,
+              verticalAlign: 'middle',
+              x: 10,
+              symbolHeight: 320
+            },
+
+            tooltip: {
+              delayForDisplay: 10,
+              formatter: function() {
+                return this.point.name + ': ' +
+                Highcharts.numberFormat(this.point.value, 2);
+              }
+            },
+
+            series: [ 
+            {
+              data: [
+              {
+                x: 0,
+                y: 0,
+                value: 1,
+                name: 'popularity ~ popularity'
+              }, {
+                x: 0,
+                y: 1,
+                value: 0.603783314791462,
+                name: 'popularity ~ followers'
+              }, {
+                x: 0,
+                y: 2,
+                value: 0.514621800508548,
+                name: 'popularity ~ degree'
+              }, {
+                x: 0,
+                y: 3,
+                value: 0.477412845975668,
+                name: 'popularity ~ weighted.degree'
+              }, {
+                x: 0,
+                y: 4,
+                value: 0.313451874140722,
+                name: 'popularity ~ eccentricity'
+              }, {
+                x: 0,
+                y: 5,
+                value: 0.331582297515286,
+                name: 'popularity ~ closeness'
+              }, {
+                x: 0,
+                y: 6,
+                value: 0.441230052169189,
+                name: 'popularity ~ betweeness'
+              }, {
+                x: 0,
+                y: 7,
+                value: 0.0425644360644257,
+                name: 'popularity ~ clustering'
+              }, {
+                x: 0,
+                y: 8,
+                value: 0.428769625769973,
+                name: 'popularity ~ eigencentrality'
+              }, {
+                x: 1,
+                y: 0,
+                value: 0.603783314791462,
+                name: 'followers ~ popularity'
+              }, {
+                x: 1,
+                y: 1,
+                value: 1,
+                name: 'followers ~ followers'
+              }, {
+                x: 1,
+                y: 2,
+                value: 0.199700782579633,
+                name: 'followers ~ degree'
+              }, {
+                x: 1,
+                y: 3,
+                value: 0.249625132398443,
+                name: 'followers ~ weighted.degree'
+              }, {
+                x: 1,
+                y: 4,
+                value: 0.100432627807857,
+                name: 'followers ~ eccentricity'
+              }, {
+                x: 1,
+                y: 5,
+                value: 0.141475675290364,
+                name: 'followers ~ closeness'
+              }, {
+                x: 1,
+                y: 6,
+                value: 0.193294770883358,
+                name: 'followers ~ betweeness'
+              }, {
+                x: 1,
+                y: 7,
+                value: 0.0410056763255723,
+                name: 'followers ~ clustering'
+              }, {
+                x: 1,
+                y: 8,
+                value: 0.158901777147963,
+                name: 'followers ~ eigencentrality'
+              }, {
+                x: 2,
+                y: 0,
+                value: 0.514621800508548,
+                name: "degree ~ popularity"
+              }, {
+                x: 2,
+                y: 1,
+                value: 0.199700782579633,
+                name: "degree ~ followers"
+              }, {
+                x: 2,
+                y: 2,
+                value: 1,
+                name: "degree ~ degree"
+              }, {
+                x: 2,
+                y: 3,
+                value: 0.886292038111981,
+                name: "degree ~ weighted.degree"
+              }, {
+                x: 2,
+                y: 4,
+                value: 0.391853672525048,
+                name: "degree ~ eccentricity"
+              }, {
+                x: 2,
+                y: 5,
+                value: 0.524851137919428,
+                name: "degree ~ closeness"
+              }, {
+                x: 2,
+                y: 6,
+                value: 0.848544482335243,
+                name: "degree ~ betweeness"
+              }, {
+                x: 2,
+                y: 7,
+                value: 0.0418778778825897,
+                name: "degree ~ clustering"
+              }, {
+                x: 2,
+                y: 8,
+                value: 0.94264862314446,
+                name: "degree ~ eigencentrality"
+              }, {
+                x: 3,
+                y: 0,
+                value: 0.477412845975668,
+                name: "weighted.degree ~ popularity"
+              }, {
+                x: 3,
+                y: 1,
+                value: 0.249625132398443,
+                name: "weighted.degree ~ followers"
+              }, {
+                x: 3,
+                y: 2,
+                value: 0.886292038111981,
+                name: "weighted.degree ~ degree"
+              }, {
+                x: 3,
+                y: 3,
+                value: 1,
+                name: "weighted.degree ~ weighted.degree"
+              }, {
+                x: 3,
+                y: 4,
+                value: 0.142054971967153,
+                name: "weighted.degree ~ eccentricity"
+              }, {
+                x: 3,
+                y: 5,
+                value: 0.33477603710628,
+                name: "weighted.degree ~ closeness"
+              }, {
+                x: 3,
+                y: 6,
+                value: 0.764252747432547,
+                name: "weighted.degree ~ betweeness"
+              }, {
+                x: 3,
+                y: 7,
+                value: -0.0132326535519321,
+                name: "weighted.degree ~ clustering"
+              }, {
+                x: 3,
+                y: 8,
+                value: 0.876502644709758,
+                name: "weighted.degree ~ eigencentrality"
+              }, {
+                x: 4,
+                y: 0,
+                value: 0.313451874140722,
+                name: "eccentricity ~ popularity"
+              }, {
+                x: 4,
+                y: 1,
+                value: 0.100432627807857,
+                name: "eccentricity ~ followers"
+              }, {
+                x: 4,
+                y: 2,
+                value: 0.391853672525048,
+                name: "eccentricity ~ degree"
+              }, {
+                x: 4,
+                y: 3,
+                value: 0.142054971967153,
+                name: "eccentricity ~ weighted.degree"
+              }, {
+                x: 4,
+                y: 4,
+                value: 1,
+                name: "eccentricity ~ eccentricity"
+              }, {
+                x: 4,
+                y: 5,
+                value: 0.634506366627349,
+                name: "eccentricity ~ closeness"
+              }, {
+                x: 4,
+                y: 6,
+                value: 0.224678703376518,
+                name: "eccentricity ~ betweeness"
+              }, {
+                x: 4,
+                y: 7,
+                value: 0.662089002169982,
+                name: "eccentricity ~ clustering"
+              }, {
+                x: 4,
+                y: 8,
+                value: 0.275879832986147,
+                name: "eccentricity ~ eigencentrality"
+              }, {
+                x: 5,
+                y: 0,
+                value: 0.331582297515286,
+                name: "closeness ~ popularity"
+              }, {
+                x: 5,
+                y: 1,
+                value: 0.141475675290364,
+                name: "closeness ~ followers"
+              }, {
+                x: 5,
+                y: 2,
+                value: 0.524851137919428,
+                name: "closeness ~ degree"
+              }, {
+                x: 5,
+                y: 3,
+                value: 0.33477603710628,
+                name: "closeness ~ weighted.degree"
+              }, {
+                x: 5,
+                y: 4,
+                value: 0.634506366627349,
+                name: "closeness ~ eccentricity"
+              }, {
+                x: 5,
+                y: 5,
+                value: 1,
+                name: "closeness ~ closeness"
+              }, {
+                x: 5,
+                y: 6,
+                value: 0.378612544185967,
+                name: "closeness ~ betweeness"
+              }, {
+                x: 5,
+                y: 7,
+                value: 0.536985705813148,
+                name: "closeness ~ clustering"
+              }, {
+                x: 5,
+                y: 8,
+                value: 0.453847693550008,
+                name: "closeness ~ eigencentrality"
+              }, {
+                x: 6,
+                y: 0,
+                value: 0.441230052169189,
+                name: "betweeness ~ popularity"
+              }, {
+                x: 6,
+                y: 1,
+                value: 0.193294770883358,
+                name: "betweeness ~ followers"
+              }, {
+                x: 6,
+                y: 2,
+                value: 0.848544482335243,
+                name: "betweeness ~ degree"
+              }, {
+                x: 6,
+                y: 3,
+                value: 0.764252747432547,
+                name: "betweeness ~ weighted.degree"
+              }, {
+                x: 6,
+                y: 4,
+                value: 0.224678703376518,
+                name: "betweeness ~ eccentricity"
+              }, {
+                x: 6,
+                y: 5,
+                value: 0.378612544185967,
+                name: "betweeness ~ closeness"
+              }, {
+                x: 6,
+                y: 6,
+                value: 1,
+                name: "betweeness ~ betweeness"
+              }, {
+                x: 6,
+                y: 7,
+                value: -0.0907899452804973,
+                name: "betweeness ~ clustering"
+              }, {
+                x: 6,
+                y: 8,
+                value: 0.748596060908733,
+                name: "betweeness ~ eigencentrality"
+              }, {
+                x: 7,
+                y: 0,
+                value: 0.0425644360644257,
+                name: "clustering ~ popularity"
+              }, {
+                x: 7,
+                y: 1,
+                value: 0.0410056763255723,
+                name: "clustering ~ followers"
+              }, {
+                x: 7,
+                y: 2,
+                value: 0.0418778778825897,
+                name: "clustering ~ degree"
+              }, {
+                x: 7,
+                y: 3,
+                value: -0.0132326535519321,
+                name: "clustering ~ weighted.degree"
+              }, {
+                x: 7,
+                y: 4,
+                value: 0.662089002169982,
+                name: "clustering ~ eccentricity"
+              }, {
+                x: 7,
+                y: 5,
+                value: 0.536985705813148,
+                name: "clustering ~ closeness"
+              }, {
+                x: 7,
+                y: 6,
+                value: -0.0907899452804973,
+                name: "clustering ~ betweeness"
+              }, {
+                x: 7,
+                y: 7,
+                value: 1,
+                name: "clustering ~ clustering"
+              }, {
+                x: 7,
+                y: 8,
+                value: 0.0021251296678515,
+                name: "clustering ~ eigencentrality"
+              }, {
+                x: 8,
+                y: 0,
+                value: 0.428769625769973,
+                name: "eigencentrality ~ popularity"
+              }, {
+                x: 8,
+                y: 1,
+                value: 0.158901777147963,
+                name: "eigencentrality ~ followers"
+              }, {
+                x: 8,
+                y: 2,
+                value: 0.94264862314446,
+                name: "eigencentrality ~ degree"
+              }, {
+                x: 8,
+                y: 3,
+                value: 0.876502644709758,
+                name: "eigencentrality ~ weighted.degree"
+              }, {
+                x: 8,
+                y: 4,
+                value: 0.275879832986147,
+                name: "eigencentrality ~ eccentricity"
+              }, {
+                x: 8,
+                y: 5,
+                value: 0.453847693550008,
+                name: "eigencentrality ~ closeness"
+              }, {
+                x: 8,
+                y: 6,
+                value: 0.748596060908733,
+                name: "eigencentrality ~ betweeness"
+              }, {
+                x: 8,
+                y: 7,
+                value: 0.0021251296678515,
+                name: "eigencentrality ~ clustering"
+              }, {
+                x: 8,
+                y: 8,
+                value: 1,
+                name: "eigencentrality ~ eigencentrality"
+              }
+            ]
+          }]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script>
+    (function(){
+        window.PLOTLYENV={'BASE_URL': 'https://plot.ly'};
+
+        var gd = document.getElementById('91e0a0ab-61b3-4ca6-997b-a72d0a69422b')
+        var resizeDebounce = null;
+
+        function resizePlot() {
+            var bb = gd.getBoundingClientRect();
+            Plotly.relayout(gd, {
+                width: bb.width,
+                height: bb.height
+            });
+        }
+
+        window.addEventListener('resize', function() {
+            if (resizeDebounce) {
+                window.clearTimeout(resizeDebounce);
+            }
+            resizeDebounce = window.setTimeout(resizePlot, 100);
+        });
+
+        Plotly.plot(gd,  {
+            data: figure_pop.data,
+            layout: figure_pop.layout,
+            frames: figure_pop.frames,
+            config: {"mapboxAccessToken": "pk.eyJ1IjoiY2hyaWRkeXAiLCJhIjoiY2lxMnVvdm5iMDA4dnhsbTQ5aHJzcGs0MyJ9.X9o_rzNLNesDxdra4neC_A", "scrollZoom": true, "displayModeBar": false,"displaylogo": false, "showLink": false}
+        });                
+     }());
+  </script>
+
+  <script>
+    (function(){
+        window.PLOTLYENV={'BASE_URL': 'https://plot.ly'};
+
+        var gd2 = document.getElementById('df9ac2ac-9293-4f0b-855e-292257c9a4f1')
+        var resizeDebounce2 = null;
+
+        function resizePlot() {
+            var bb2 = gd2.getBoundingClientRect();
+            Plotly.relayout(gd2, {
+                width: bb2.width,
+                height: bb2.height
+            });
+        }
+
+        window.addEventListener('resize', function() {
+            if (resizeDebounce2) {
+                window.clearTimeout(resizeDebounce2);
+            }
+            resizeDebounce2 = window.setTimeout(resizePlot, 100);
+        });
+
+        Plotly.plot(gd2,  {
+            data: figure_foll.data,
+            layout: figure_foll.layout,
+            frames: figure_foll.frames,
+            config: {"mapboxAccessToken": "pk.eyJ1IjoiY2hyaWRkeXAiLCJhIjoiY2lxMnVvdm5iMDA4dnhsbTQ5aHJzcGs0MyJ9.X9o_rzNLNesDxdra4neC_A", "scrollZoom": true, "displayModeBar": false,"displaylogo": false, "showLink": false}
+        });                
+     }());
+  </script>
+
+  <script src="js/scrollify.js"></script>
+  <script src="js/scripts.min.js"></script>
+  <script src="js/main.min.js"></script>
+  </body>
+</html>

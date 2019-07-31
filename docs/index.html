@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <title>COMUSIC. &mdash; Good things come to those who collaborate</title>    
+    <meta name="description" content="COMUSIC. an ongoing project created with the aim of studying patterns and characteristics of musical collaborative networks."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Mariana O. S. Silva"/>
+
+    <!-- favicon -->
+    <link href="img/favicon.png" rel=icon>
+
+    <!-- web-fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/styles-merged.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <!-- START: nav -->  
+  <div class="probootstrap-loader"></div>
+  <header class="probootstrap-header">
+    <div class="container">
+        <a href="index.html" class="probootstrap-logo">Comusic.</a>        
+        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+        <div class="mobile-menu-overlay"></div>
+        <nav class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="network.html">Network</a></li>
+            <li><a href="visualizations.html">Visualizations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="extra-text visible-xs"> 
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+          </div>
+        </nav>
+    </div>
+  </header>
+  <!-- END: nav -->
+
+  <!-- START: header -->
+  <section class="probootstrap-slider text-center flexslider">
+    <div class="hero-wrap js-fullheight">
+      <ul class="slides">
+        <div class="overlay">
+        <div id="particles-js"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-20">
+              <div class="slides-text probootstrap-animate" data-animate-effect="fadeIn">
+                <h2>Good things come to those who<br><strong>COLLABORATE</strong></h2> 
+                <a href="network.html" class="btn btn-outline-white px-5 py-3">Network</a>
+              </div>
+            </div>
+          </div>      
+          <a href="#section-intro" class="scroll" alt=""></a>
+        </div>
+        </div>
+      </ul>
+    </div>
+  </section> 
+  <!-- END: slider  -->
+
+  <section class="probootstrap-section probootstrap-section-lighter">
+    <div class="container">
+      <div class="row overlap">
+        <div class="col-md-12 text-center probootstrap-animate">
+          <img src="img/logo_dark.svg" alt="logo" width="350px" height="100%"/>
+          <h3>an ongoing project created with the aim of<br> 
+          studying patterns and characteristics of <b>musical collaborative networks</b>.</h3>
+        </div>
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+            <div class="icon">
+              <i class="icon-network"></i>
+            </div>
+            <div class="text">
+              <h3 class="heading">Social Networks</h3>
+              <p>We have studied the structure of a musical collaboration social network using the tools of network science</p>
+              <!-- <p><a href="single-page.html">Learn more</a></p> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+            <div class="icon">
+              <i class="icon-flow-tree"></i>
+            </div>
+            <div class="text">
+              <h3 class="heading">Collaboration Profiles</h3>
+              <p>We investigate how collaboration profiles affect artists' popularity in a collaborative success-based network</p>
+              <!-- <p><a href="single-page.html">Learn more</a></p> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+            <div class="icon">
+              <i class="icon-note"></i>
+            </div>
+            <div class="text">
+              <h3 class="heading">Musical Success</h3>
+              <p>An exploratory study modeling success through social interaction profiles in the music industry</p>
+              <!-- <p><a href="single-page.html">Learn more</a></p> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 text-center probootstrap-animate">
+          <p><a href="about.html" class="btn btn-primary mt40 py-3 px-5">More about our project</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END section -->
+
+  <div class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center section-heading probootstrap-animate">
+          <h2>Our Methodology</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 probootstrap-animate" data-animate-effect="fadeInLeft">
+
+          <div class="panel-group probootstrap-panel" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne">
+                <h3 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Network Analysis
+                  </a>
+                </h3>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                  <p>Using data from Billboard and Spotify, we construct a collaborative success-based network and apply tools of network science to study its structure.</p>              
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingTwo">
+                <h3 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Collaboration Profiles
+                  </a>
+                </h3>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                  <p>By means of topological metrics, we define four categories of collaboration profiles, each with two levels of subcategories. The classes are defined according to the specific social metrics' features.</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingThree">
+                <h3 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Clustering
+                  </a>
+                </h3>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                  <p>Applying a clustering algorithm, we identify three well-defined communities with distinct collaboration patterns and notable discrepancies in levels of musical success.</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingFour">
+                <h3 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Statistical Analysis
+                  </a>
+                </h3>
+              </div>
+              <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                <div class="panel-body">
+                  <p>Then, we conduct a statistical correlation analysis to evaluate the association between collaboration profiles and the artist's success.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- END panel-group -->
+        </div>
+        <div class="col-md-6 probootstrap-animate" data-animate-effect="fadeInRight">
+          <p><img src="img/meth.jpg" class="img-responsive" alt="Methodology" width="100%" height="100%"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END section -->
+  
+  <section class="probootstrap-section probootstrap-section-lighter" id="section-intro">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center probootstrap-animate">
+          <h2 style="font-size: 2em;color: #6090b3"><b>Datasets</b></h2>  
+        </div>
+      </div>
+      <hr />
+      <div class="row"> 
+        <div class="col-md-6 text-center probootstrap-animate">
+          <div class="probootstrap-card with-hover">
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">Successfull Network</h2>
+              <p class="category">The successful musical collaboration network.</p>
+              <p><a href="download/network.zip" class="btn btn-primary py-2 px-6" download> <i class="icon-file-zip"></i> Download</a></p> 
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-center probootstrap-animate">
+          <div class="probootstrap-card with-hover">
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">Billboard Charts</h2>
+              <p class="category">Some Billboard Charts data.</p>
+              <p><a href="download/billboard.zip" class="btn btn-primary py-2 px-6" download> <i class="icon-file-zip"></i> Download</a></p> 
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-center probootstrap-animate">
+          <div class="probootstrap-card with-hover">
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">Ego Networks</h2>
+              <p class="category">All the 30 ego networks.</p>
+              <p><a href="download/egonetworks.zip" class="btn disabled btn-primary py-2 px-6" download> <i class="icon-file-zip"></i> Download</a></p> 
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-center probootstrap-animate">
+          <div class="probootstrap-card with-hover">
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">Time Series</h2>
+              <p class="category">All the time series.</p>
+              <p><a href="download/timeseries.zip" class="btn disabled btn-primary py-2 px-6" download> <i class="icon-file-zip"></i> Download</a></p> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center section-heading probootstrap-animate">
+          <h2>Recent Work</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 probootstrap-animate">
+          <div class="probootstrap-card with-hover">
+            <div class="probootstrap-card-media">
+              <img src="img/net.jpg" class="img-responsive img-border" alt="Network" width="100%" height="100%">
+            </div>
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">Successfull Network</h2>
+              <p class="category">Description of the successful musical collaboration network.</p>
+              <p><a href="network.html">View details</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 probootstrap-animate">
+          <div class="probootstrap-card with-hover">
+            <div class="probootstrap-card-media">
+              <img src="img/billboard.jpg" class="img-responsive img-border" alt="Billboard" width="100%" height="100%"> 
+            </div>
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">Billboard Charts</h2>
+              <p class="category">Statistics on some of the Billboard charts.</p>
+              <p><a href="billboard.html">View details</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 probootstrap-animate">
+          <div class="probootstrap-card with-hover">
+            <div class="probootstrap-card-media">
+              <img src="img/collab.jpg" class="img-responsive img-border" alt="Collaboration" width="100%" height="100%">
+            </div>
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">Collaboration Profiles</h2>
+              <p class="category">Definition of the profiles of musical collaboration.</p>
+              <p><a href="collab.html">View details</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- END section -->
+
+  <footer class="probootstrap-footer probootstrap-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget">
+            <h3>Comusic.</h3>
+            <p>an ongoing project created with the aim of 
+          studying patterns and characteristics of <b>musical collaborative networks.</b></p>
+            <p><a href="about.html" class="btn btn-ghost btn-ghost-white btn-sm">Read more</a></p>
+          </div> 
+        </div>
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h3>Quick Links</h3>
+            <ul class="stack-link">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="network.html">Network</a></li>
+              <li><a href="visualizations.html">Visualizations</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h3>Visualizations</h3>
+            <ul class="stack-link">
+              <li><a href="billboard.html">Billboard Charts</a></li>
+              <li><a href="collab.html">Collaboration Profiles</a></li>
+              <li><a href="cluster.html">Results of Clustering</a></li>
+              <li><a href="statistics.html">Statistical Analysis</a></li>
+            </ul>
+          </div> 
+        </div> 
+      </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <ul class="probootstrap-social">
+              <li><a href="http://www.labcsx.dcc.ufmg.br/doku.php?id=start"><img src="img/logo_lab.svg" alt="labcsx" width="80px" height="100%" /></a></li><li><a href="https://www.dcc.ufmg.br/"><img src="img/dcc.svg" alt="dcc" width="7%"/></a></li>
+              <li><a href="https://ufmg.br/"><img src="img/ufmg.svg" alt="ufmg" width="80px" height="100%"/></a></li>
+              <li><a href="http://www.cnpq.br/"><img src="img/cnpq.svg" alt="cnpq" width="80px" height="100%"/></a></li>
+              <li><a href="http://www.fapemig.br/"><img src="img/fapemig.svg" alt="fapemig" width="70px" height="100%"/></a></li>
+            </ul> 
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="probootstrap-footer">
+            <p>&copy; 2017 <a href="https://uicookies.com/">uiCookies:Virb</a>. Designed by <a href="https://uicookies.com/">uicookies.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop" alt=""><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+  <script src="js/scrollify.js"></script>
+  <script src="js/scripts.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/particles.min.js"></script>
+  <script src="js/particle.js"></script>
+
+  </body>
+</html>
