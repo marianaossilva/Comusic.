@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <title>Results of Clustering</title>    
+    <meta name="description" content="COMUSIC. an ongoing project created with the aim of studying patterns and characteristics of musical collaborative networks."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Mariana O. S. Silva"/>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/highcharts.js"></script>
+    <script src="js/highcharts-more.js"></script>
+    <script src="js/modules/exporting.js"></script>
+
+    <script src="js/plotlyjs-bundle.js"></script>
+    <script src="js/elbow/figure.js"></script>
+
+    <!-- favicon -->
+    <link href="img/favicon.png" rel=icon>
+
+    <!-- web-fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/styles-merged.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+   <section class="probootstrap-section" id="section-intro">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center probootstrap-animate">
+          <div id="container0" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="probootstrap-section">
+    <div class="container">
+      <hr />
+      <div class="row">
+        <div class="col-md-12 text-center probootstrap-animate">
+            <h2 style="color: #6090b3">Comparing the results</h2>
+            <p style="font-size: 1em">Now we can compare and identify which collaboration profile each cluster belongs to.</p>
+        </div>
+      </div>
+      <hr />      
+      <div class="row">
+        <div class="col-md-4 text-center probootstrap-animate">
+          <div id="container1" style="width: 100%; height: 500px"></div>
+        </div>
+        <div class="col-md-4 text-center probootstrap-animate">
+          <div id="container2" style="width: 100%; height: 500px"></div>
+        </div>
+        <div class="col-md-4 text-center probootstrap-animate">
+          <div id="container3" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+      <hr />      
+      <div class="row">
+        <div class="col-md-4 text-center probootstrap-animate">
+          <div id="container4" style="width: 100%; height: 500px"></div>
+        </div>
+        <div class="col-md-4 text-center probootstrap-animate">
+          <div id="container5" style="width: 100%; height: 500px"></div>
+        </div>
+        <div class="col-md-4 text-center probootstrap-animate">
+          <div id="container6" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-12 text-center probootstrap-animate">
+          <div id="container" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop" alt=""><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+  <script>
+    (function($)
+    {
+    $(function () {
+        $('#container0').highcharts({
+            chart: {
+              backgroundColor: 'transparent',
+              polar: true,
+              style: {
+                  position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+              },
+              type: 'line'
+            },
+            subtitle: {
+              text: '<p><b>The 16 collaborative profiles inferred from the four major categories</b></p><br><br><p><i>(select a profile to visualize in the chart)</i></p>',
+              x: -80
+            },
+            title: {
+              text: 'Collaboration Profiles',
+              x: -80
+            },
+            xAxis: {
+                categories: ["degree", "wdegree", "closeness", "eccentricity", "betweeness", "eigencentrality", "clustering"],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {/*
+              pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>',*/
+              mode: 'label'
+            },
+            legend: {
+              title: {
+                text: 'Profiles ID:'
+              },
+              align: 'right',
+              verticalAlign: 'top',
+              y: 70,
+              x: -10,
+              layout: 'vertical'
+            },
+            series: [{
+              type: 'area',
+              visible: true,
+              name: '1A 2A 3A 4A',
+              data: [0, 0, 0, 0, 0, 0, 0],
+              pointPlacement: 'on',
+              color: 'rgba(154,205,50,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1A 2A 3A 4B',
+              data: [0, 0, 0, 0, 1, 1, 0],
+              pointPlacement: 'on',
+              color: 'rgba(255,255,0,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1A 2A 3B 4A',
+              data: [0, 0, 0, 0, 0, 0, 1],
+              pointPlacement: 'on',
+              color: 'rgba(255,165,0,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1A 2A 3B 4B',
+              data: [0, 0, 0, 0, 1, 1, 1],
+              pointPlacement: 'on',
+              color: 'rgba(255,0,0,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1A 2B 3A 4A',
+              data: [0, 0, 1, 1, 0, 0, 0],
+              pointPlacement: 'on',
+              color: 'rgba(255,105,180,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1A 2B 3A 4B',
+              data: [0, 0, 1, 1, 1, 1, 0],
+              pointPlacement: 'on',
+              color: 'rgba(160,32,240,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1A 2B 3B 4A',
+              data: [0, 0, 1, 1, 0, 0, 1],
+              pointPlacement: 'on',
+              color: 'rgba(65,105,225,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1A 2B 3B 4B',
+              data: [0, 0, 1, 1, 1, 1, 1],
+              pointPlacement: 'on',
+              color: 'rgba(64,224,208,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1B 2A 3A 4A',
+              data: [1, 1, 0, 0, 0, 0, 0],
+              pointPlacement: 'on',
+              color: 'rgba(154,205,50,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1B 2A 3A 4B',
+              data: [1, 1, 0, 0, 1, 1, 0],
+              pointPlacement: 'on',
+              color: 'rgba(255,255,0,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1B 2A 3B 4A',
+              data: [1, 1, 0, 0, 0, 0, 1],
+              pointPlacement: 'on',
+              color: 'rgba(255,165,0,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1B 2A 3B 4B',
+              data: [1, 1, 0, 0, 1, 1, 1],
+              pointPlacement: 'on',
+              color: 'rgba(255,105,180,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1B 2B 3A 4A',
+              data: [1, 1, 1, 1, 0, 0, 0],
+              pointPlacement: 'on',
+              color: 'rgba(255,105,180,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1B 2B 3A 4B',
+              data: [1, 1, 1, 1, 1, 1, 0],
+              pointPlacement: 'on',
+              color: 'rgba(160,32,240,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1B 2B 3B 4A',
+              data: [1, 1, 1, 1, 0, 0, 1],
+              pointPlacement: 'on',
+              color: 'rgba(65,105,225,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: '1B 2B 3B 4B',
+              data: [1, 1, 1, 1, 1, 1, 1],
+              pointPlacement: 'on',
+              color: 'rgba(64,224,208,0.5)',
+              dashStyle: "Dot"
+            }
+
+            ]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script>
+    (function(){
+        window.PLOTLYENV={'BASE_URL': 'https://plot.ly'};
+
+        var gd = document.getElementById('da3435be-b519-4fa5-90a1-296db2654d49')
+        var resizeDebounce = null;
+
+        function resizePlot() {
+            var bb = gd.getBoundingClientRect();
+            Plotly.relayout(gd, {
+                width: bb.width,
+                height: bb.height
+            });
+        }
+
+        window.addEventListener('resize', function() {
+            if (resizeDebounce) {
+                window.clearTimeout(resizeDebounce);
+            }
+            resizeDebounce = window.setTimeout(resizePlot, 100);
+        });
+
+        Plotly.plot(gd,  {
+            data: figure.data,
+            layout: figure.layout,
+            frames: figure.frames,
+            config: {"mapboxAccessToken": "pk.eyJ1IjoiY2hyaWRkeXAiLCJhIjoiY2lxMnVvdm5iMDA4dnhsbTQ5aHJzcGs0MyJ9.X9o_rzNLNesDxdra4neC_A", "scrollZoom": true, "displayModeBar": false,"displaylogo": false, "showLink": false}
+        });
+                
+     }());
+  </script>
+
+  <script>
+    (function($)
+    {
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+              backgroundColor: 'transparent',
+              polar: true,
+              style: {
+                  position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+              },
+              type: 'line'
+            },
+            subtitle: {
+              text: '<i>(select a profile to visualize in the chart)</i>'
+            },
+            title: {
+              text: 'Clusters\' Collaboration Profiles'
+            },
+            xAxis: {
+                categories: ["degree", "wdegree", "closeness", "eccentricity", "betweeness", "eigencentrality", "clustering"],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {
+              mode: 'label'
+            },
+            legend: {
+              align: 'center',
+              verticalAlign: 'top',
+              layout: 'horizontal'
+            },
+            series: [{
+              type: 'area',
+              visible: true,
+              name: 'No Collaboration (Absent)',
+              data: [0, 0, 0, 0, 0, 0, 0],
+              pointPlacement: 'on',
+              color: 'rgba(255,124,128,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: 'Regular Collaboration (Regular)',
+              data: [0, 0, 1, 1, 0, 0, 1],
+              pointPlacement: 'on',
+              color: 'rgba(255,172,106,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: 'Diverse Collaboration (Diverse)',
+              data: [1, 1, 1, 1, 1, 1, 1],
+              pointPlacement: 'on',
+              color: 'rgba(253,198,107,0.5)',
+              dashStyle: "Dot"
+            }]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script>
+    (function($)
+    {
+    $(function () {
+        $('#container2').highcharts({
+            chart: {
+              backgroundColor: 'transparent',
+              polar: true,
+              style: {
+                  position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+              },
+              type: 'line'
+            },
+            xAxis: {
+                categories: ["degree", "wdegree", "closeness", "eccentricity", "betweeness", "eigencentrality", "clustering"],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            exporting: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {
+              mode: 'label'
+            },
+            title: {
+              text: ''
+            },
+            legend: {
+              align: 'center',
+              verticalAlign: 'top',
+              layout: 'horizontal'
+            },
+            series: [{
+              type: 'area',
+              visible: true,
+              name: 'Cluster 2',
+              data: [0, 0, 0, 0, 0, 0, 0],
+              pointPlacement: 'on',
+              color: 'rgba(124, 255, 251, 0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: true,
+              name: '1A 2A 3A 4A',
+              data: [0, 0, 0, 0, 0, 0, 0],
+              pointPlacement: 'on',
+              color: 'rgba(255,124,128, 0.5)',
+              dashStyle: "Dot"
+            }]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script>
+    (function($)
+    {
+    $(function () {
+        $('#container1').highcharts({
+            chart: {
+              backgroundColor: 'transparent',
+              polar: true,
+              style: {
+                  position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+              },
+              type: 'line'
+            },
+            xAxis: {
+                categories: ["degree", "wdegree", "closeness", "eccentricity", "betweeness", "eigencentrality", "clustering"],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            exporting: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {
+              mode: 'label'
+            },
+            title: {
+              text: ''
+            },
+            legend: {
+              align: 'center',
+              verticalAlign: 'top',
+              layout: 'horizontal'
+            },
+            series: [{
+              type: 'area',
+              visible: true,
+              name: 'Cluster 1',
+              data: [0.2636851, 0.2255142, 0.9928541, 1, 0.1774056, 0.1890057, 1],
+              pointPlacement: 'on',
+              color: 'rgba(106, 189, 255, 0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: true,
+              name: '1A 2B 3B 4A',
+              data: [0, 0, 1, 1, 0, 0, 1],
+              pointPlacement: 'on',
+              color: 'rgba(255,172,106, 0.5)',
+              dashStyle: "Dot"
+            }]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script>
+    (function($)
+    {
+    $(function () {
+        $('#container3').highcharts({
+            chart: {
+              backgroundColor: 'transparent',
+              polar: true,
+              style: {
+                  position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+              },
+              type: 'line'
+            },
+            xAxis: {
+                categories: ["degree", "wdegree", "closeness", "eccentricity", "betweeness", "eigencentrality", "clustering"],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            exporting: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {
+              mode: 'label'
+            },
+            title: {
+              text: ''
+            },
+            legend: {
+              align: 'center',
+              verticalAlign: 'top',
+              layout: 'horizontal'
+            },
+            series: [{
+              type: 'area',
+              visible: true,
+              name: 'Cluster 3',
+              data: [1, 1, 1, 0.852543, 1, 1, 0.5464798],
+              pointPlacement: 'on',
+              color: 'rgba(107, 162, 253, 0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: true,
+              name: '1B 2B 3B 4B',
+              data: [1, 1, 1, 1, 1, 1, 1],
+              pointPlacement: 'on',
+              color: 'rgba(253,198,107, 0.5)',
+              dashStyle: "Dot"
+            }]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script>
+    (function($)
+    {
+    $(function () {
+        $('#container5').highcharts({
+            chart: {
+              backgroundColor: 'transparent',
+              polar: true,
+              style: {
+                  position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+              },
+              type: 'line'
+            },
+            xAxis: {
+                categories: ["degree", "wdegree", "closeness", "eccentricity", "betweeness", "eigencentrality", "clustering"],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            exporting: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {
+              mode: 'label'
+            },
+            title: {
+              text: ''
+            },
+            legend: {
+              align: 'center',
+              verticalAlign: 'top',
+              layout: 'horizontal'
+            },
+            series: [{
+              type: 'area',
+              visible: true,
+              name: 'Cluster 2',
+              data: [0, 0, 0, 0, 0, 0, 0],
+              pointPlacement: 'on',
+              color: 'rgba(124, 255, 251, 0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: true,
+              name: '1A 2A 3A 4A',
+              data: [0, 0, 0, 0, 0, 0, 0],
+              pointPlacement: 'on',
+              color: 'rgba(255,124,128, 0.5)',
+              dashStyle: "Dot"
+            }]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script>
+    (function($)
+    {
+    $(function () {
+        $('#container4').highcharts({
+            chart: {
+              backgroundColor: 'transparent',
+              polar: true,
+              style: {
+                  position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+              },
+              type: 'line'
+            },
+            xAxis: {
+                categories: ["degree", "wdegree", "closeness", "eccentricity", "betweeness", "eigencentrality", "clustering"],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            exporting: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {
+              mode: 'label'
+            },
+            title: {
+              text: ''
+            },
+            legend: {
+              align: 'center',
+              verticalAlign: 'top',
+              layout: 'horizontal'
+            },
+            series: [{
+              type: 'area',
+              visible: true,
+              name: 'Cluster 1',
+              data: [0.1966987, 0.2283503, 0.9938126, 1, 0.3750387, 0.04050451, 0.5152704],
+              pointPlacement: 'on',
+              color: 'rgba(106, 189, 255, 0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: true,
+              name: '1A 2B 3B 4A',
+              data: [0, 0, 1, 1, 0, 0, 1],
+              pointPlacement: 'on',
+              color: 'rgba(255,172,106, 0.5)',
+              dashStyle: "Dot"
+            }]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script>
+    (function($)
+    {
+    $(function () {
+        $('#container6').highcharts({
+            chart: {
+              backgroundColor: 'transparent',
+              polar: true,
+              style: {
+                  position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+              },
+              type: 'line'
+            },
+            xAxis: {
+                categories: ["degree", "wdegree", "closeness", "eccentricity", "betweeness", "eigencentrality", "clustering"],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            exporting: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {
+              mode: 'label'
+            },
+            title: {
+              text: ''
+            },
+            legend: {
+              align: 'center',
+              verticalAlign: 'top',
+              layout: 'horizontal'
+            },
+            series: [{
+              type: 'area',
+              visible: true,
+              name: 'Cluster 3',
+              data: [1, 1, 1, 0.8868839, 1, 1, 1],
+              pointPlacement: 'on',
+              color: 'rgba(107, 162, 253, 0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: true,
+              name: '1B 2B 3B 4B',
+              data: [1, 1, 1, 1, 1, 1, 1],
+              pointPlacement: 'on',
+              color: 'rgba(253,198,107, 0.5)',
+              dashStyle: "Dot"
+            }]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script src="js/scrollify.min.js"></script>
+  <script src="js/scripts.min.js"></script>
+  <script src="js/main.min.js"></script>
+  </body>
+</html>

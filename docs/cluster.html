@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <title>Results of Clustering</title>    
+    <meta name="description" content="COMUSIC. an ongoing project created with the aim of studying patterns and characteristics of musical collaborative networks."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Mariana O. S. Silva"/>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/highcharts.js"></script>
+    <script src="js/highcharts-more.js"></script>
+    <script src="js/modules/exporting.js"></script>
+
+    <script src="js/plotlyjs-bundle.js"></script>
+    <script src="js/elbow/figure.js"></script>
+
+    <!-- favicon -->
+    <link href="img/favicon.png" rel=icon>
+
+    <!-- web-fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/styles-merged.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <!-- START: nav -->  
+  <div class="probootstrap-loader"></div>
+  <header class="probootstrap-header">
+    <div class="container">
+        <a href="index.html" class="probootstrap-logo">Comusic.</a>        
+        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+        <div class="mobile-menu-overlay"></div>
+        <nav class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="network.html">Network</a></li>
+            <li><a href="visualizations.html">Visualizations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="extra-text visible-xs"> 
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+          </div>
+        </nav>
+    </div>
+  </header>
+  <!-- END: nav -->
+  
+  <section class="probootstrap-slider flexslider">
+    <ul class="slides">
+      <li style="background-image: url(img/cluster.jpg);" class="overlay2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-20 text-center">
+            <div class="slides-text probootstrap-animate" data-animate-effect="fadeIn">
+              <h2>Results of <strong>Clustering</strong></h2>
+            </div>
+          </div>
+        </div>
+        <a href="#section-intro" class="scroll" alt=""></a>
+      </div>
+    </ul>
+  </section> 
+  <!-- END: slider  -->
+
+  <section class="probootstrap-section"  id="section-intro">
+    <div class="container">
+      <div class="row probootstrap-animate" data-animate-effect="fadeInLeft">
+        <div class="col-md-6">
+          <p><img src="img/cluster.jpg" class="img-responsive" alt="Clustering" width="100%" height="100%"></p>
+        </div>
+        <div class="col-md-6">
+          <h2 style="font-size: 2em;color: #0b0b0b">Clustering Process</h2>
+          <p style="font-size: 0.9em;text-align:justify;"> After calculating the topological metrics of each artist, we applied a clustering algorithm to group those with similar topological features. In this way, we find groups of artists with similar topological values and, consequently, similar collaboration profiles. Here, we use <mark>K-means clustering algorithm</mark>, which is the simplest and most commonly used cluster method. One of the first steps when using this algorithm is to define the number of clusters to work with. We use a common solution to identify the optimum number of clusters: the <mark>Elbow method</mark>. According to the chart below, the curve decreases as <b>k</b> increases, but it can be seen a bend (or "elbow") at <b>k = 3</b>. This bend indicates that additional clusters beyond the third one would negatively affect the results by increasing <b>k</b>. Therefore, <b>k = 3</b> is our optimal number of clusters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center probootstrap-animate">
+          <div id="da3435be-b519-4fa5-90a1-296db2654d49" style="width: 100%; height: 500px;" class="plotly-graph-div"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 probootstrap-animate" data-animate-effect="fadeInLeft">
+          <h2 style="font-size: 1.5em; color: #6090b3;">Results of Clustering<br></h2><text style="font-size: .8em; color: #0b0b0b">The figure on the right shows the clustering results, with coloring each data point according to its cluster assignment. We can see from the results that there is a natural division between communities.</text>
+          <p></p>
+          <div class="panel-group probootstrap-panel" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne">
+                <h3 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Diverse Collaboration (Diverse)
+                  </a>
+                </h3>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                  <p>This cluster presents high metric values related to the <mark>Interaction</mark>, <mark>Distance</mark> and <mark>Influence</mark> categories. However, it has a median value for <mark>Similarity</mark>.</p>              
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingTwo">
+                <h3 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Regular Collaboration (Regular)
+                  </a>
+                </h3>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                  <p>This cluster only presents high values in <mark>Distance</mark> and <mark>Similarity</mark>.</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingThree">
+                <h3 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    No Collaboration (Absent)
+                  </a>
+                </h3>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <p>This cluster presents only null values for all the categories.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END panel-group -->
+        </div>
+        <div class="col-md-6 probootstrap-animate" data-animate-effect="fadeInRight">
+          <p><a href="img/k-means.svg"><img src="img/k-means.png" class="img-responsive" alt="K-Means" width="100%" height="100%"></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center probootstrap-animate">
+            <h2 style="color: #6090b3">Identifying Clusters' Collaboration Profiles</h2>
+            <p style="font-size: 1em">The radar chart below shows the profiles' characterization of each cluster.</p>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-12 text-center probootstrap-animate">
+          <div id="container" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center probootstrap-animate">
+            <h2 style="color: #6090b3">Comparing the results</h2>
+            <p style="font-size: 1em">Now we can compare and identify which collaboration profile each cluster belongs to.</p>
+        </div>
+      </div>
+      <hr />      
+      <div class="row">
+        <div class="col-md-4 text-center probootstrap-animate">
+          <div id="container1" style="width: 100%; height: 500px"></div>
+        </div>
+        <div class="col-md-4 text-center probootstrap-animate">
+          <div id="container2" style="width: 100%; height: 500px"></div>
+        </div>
+        <div class="col-md-4 text-center probootstrap-animate">
+          <div id="container3" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="probootstrap-footer probootstrap-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget">
+            <h3>Comusic.</h3>
+            <p>an ongoing project created with the aim of 
+          studying patterns and characteristics of <b>musical collaborative networks.</b></p>
+            <p><a href="about.html" class="btn btn-ghost btn-ghost-white btn-sm">Read more</a></p>
+          </div> 
+        </div>
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h3>Quick Links</h3>
+            <ul class="stack-link">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="network.html">Network</a></li>
+              <li><a href="visualizations.html">Visualizations</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h3>Visualizations</h3>
+            <ul class="stack-link">
+              <li><a href="billboard.html">Billboard Charts</a></li>
+              <li><a href="collab.html">Collaboration Profiles</a></li>
+              <li><a href="cluster.html">Results of Clustering</a></li>
+              <li><a href="statistics.html">Statistical Analysis</a></li>
+            </ul>
+          </div> 
+        </div> 
+      </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <ul class="probootstrap-social">
+              <li><a href="http://www.labcsx.dcc.ufmg.br/doku.php?id=start"><img src="img/logo_lab.svg" alt="labcsx" width="80px" height="100%" /></a></li><li><a href="https://www.dcc.ufmg.br/"><img src="img/dcc.svg" alt="dcc" width="7%"/></a></li>
+              <li><a href="https://ufmg.br/"><img src="img/ufmg.svg" alt="ufmg" width="80px" height="100%"/></a></li>
+              <li><a href="http://www.cnpq.br/"><img src="img/cnpq.svg" alt="cnpq" width="80px" height="100%"/></a></li>
+              <li><a href="http://www.fapemig.br/"><img src="img/fapemig.svg" alt="fapemig" width="70px" height="100%"/></a></li>
+            </ul> 
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="probootstrap-footer">
+            <p>&copy; 2017 <a href="https://uicookies.com/">uiCookies:Virb</a>. Designed by <a href="https://uicookies.com/">uicookies.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop" alt=""><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+  <script>
+    (function(){
+        window.PLOTLYENV={'BASE_URL': 'https://plot.ly'};
+
+        var gd = document.getElementById('da3435be-b519-4fa5-90a1-296db2654d49')
+        var resizeDebounce = null;
+
+        function resizePlot() {
+            var bb = gd.getBoundingClientRect();
+            Plotly.relayout(gd, {
+                width: bb.width,
+                height: bb.height
+            });
+        }
+
+        window.addEventListener('resize', function() {
+            if (resizeDebounce) {
+                window.clearTimeout(resizeDebounce);
+            }
+            resizeDebounce = window.setTimeout(resizePlot, 100);
+        });
+
+        Plotly.plot(gd,  {
+            data: figure.data,
+            layout: figure.layout,
+            frames: figure.frames,
+            config: {"mapboxAccessToken": "pk.eyJ1IjoiY2hyaWRkeXAiLCJhIjoiY2lxMnVvdm5iMDA4dnhsbTQ5aHJzcGs0MyJ9.X9o_rzNLNesDxdra4neC_A", "scrollZoom": true, "displayModeBar": false,"displaylogo": false, "showLink": false}
+        });
+                
+     }());
+  </script>
+
+  <script>
+    (function($)
+    {
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+              backgroundColor: 'transparent',
+              polar: true,
+              style: {
+                  position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+              },
+              type: 'line'
+            },
+            subtitle: {
+              text: '<i>(select a profile to visualize in the chart)</i>'
+            },
+            title: {
+              text: 'Clusters\' Collaboration Profiles'
+            },
+            xAxis: {
+                categories: ["degree", "wdegree", "closeness", "eccentricity", "betweeness", "eigencentrality", "clustering"],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {
+              mode: 'label'
+            },
+            legend: {
+              align: 'center',
+              verticalAlign: 'top',
+              layout: 'horizontal'
+            },
+            series: [{
+              type: 'area',
+              visible: true,
+              name: 'No Collaboration (Absent)',
+              data: [0, 0, 0, 0, 0, 0, 0],
+              pointPlacement: 'on',
+              color: 'rgba(96, 144, 179,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: 'Regular Collaboration (Regular)',
+              data: [0.2490564, 0.07817839, 0.8133486, 1, 0.1872759, 0.1740189, 1],
+              pointPlacement: 'on',
+              color: 'rgba(94, 97, 133,0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: false,
+              name: 'Diverse Collaboration (Diverse)',
+              data: [1, 1, 1, 0.8436878, 1, 1, 0.4982393],
+              pointPlacement: 'on',
+              color: 'rgba(80, 54, 79,0.5)',
+              dashStyle: "Dot"
+            }]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script>
+    (function($)
+    {
+    $(function () {
+        $('#container1').highcharts({
+            chart: {
+              backgroundColor: 'transparent',
+              polar: true,
+              style: {
+                  position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+              },
+              type: 'line'
+            },
+            xAxis: {
+                categories: ["degree", "wdegree", "closeness", "eccentricity", "betweeness", "eigencentrality", "clustering"],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            exporting: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {
+              mode: 'label'
+            },
+            title: {
+              text: ''
+            },
+            legend: {
+              align: 'center',
+              verticalAlign: 'top',
+              layout: 'horizontal'
+            },
+            series: [{
+              type: 'area',
+              visible: true,
+              name: 'Absent',
+              data: [0, 0, 0, 0, 0, 0, 0],
+              pointPlacement: 'on',
+              color: 'rgba(96, 144, 179, 0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: true,
+              name: '1A 2A 3A 4A',
+              data: [0, 0, 0, 0, 0, 0, 0],
+              pointPlacement: 'on',
+              color: 'rgba(179, 96, 144, 0.5)',
+              dashStyle: "Dot"
+            }]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script>
+    (function($)
+    {
+    $(function () {
+        $('#container2').highcharts({
+            chart: {
+              backgroundColor: 'transparent',
+              polar: true,
+              style: {
+                  position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+              },
+              type: 'line'
+            },
+            xAxis: {
+                categories: ["degree", "wdegree", "closeness", "eccentricity", "betweeness", "eigencentrality", "clustering"],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            exporting: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {
+              mode: 'label'
+            },
+            title: {
+              text: ''
+            },
+            legend: {
+              align: 'center',
+              verticalAlign: 'top',
+              layout: 'horizontal'
+            },
+            series: [{
+              type: 'area',
+              visible: true,
+              name: 'Regular',
+              data: [0.2490564, 0.07817839, 0.8133486, 1, 0.1872759, 0.1740189, 1],
+              pointPlacement: 'on',
+              color: 'rgba(94, 97, 133, 0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: true,
+              name: '1A 2B 3B 4A',
+              data: [0, 0, 1, 1, 0, 0, 1],
+              pointPlacement: 'on',
+              color: 'rgba(186, 176, 65, 0.5)',
+              dashStyle: "Dot"
+            }]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script>
+    (function($)
+    {
+    $(function () {
+        $('#container3').highcharts({
+            chart: {
+              backgroundColor: 'transparent',
+              polar: true,
+              style: {
+                  position: 'absolute',
+                  fontFamily: '\"Open Sans\", sans-serif'
+              },
+              type: 'line'
+            },
+            xAxis: {
+                categories: ["degree", "wdegree", "closeness", "eccentricity", "betweeness", "eigencentrality", "clustering"],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            exporting: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {
+              mode: 'label'
+            },
+            title: {
+              text: ''
+            },
+            legend: {
+              align: 'center',
+              verticalAlign: 'top',
+              layout: 'horizontal'
+            },
+            series: [{
+              type: 'area',
+              visible: true,
+              name: 'Diverse',
+              data: [1, 1, 1, 0.8436878, 1, 1, 0.4982393],
+              pointPlacement: 'on',
+              color: 'rgba(124, 104, 123, 0.5)',
+              dashStyle: "Dot"
+            }, {
+              type: 'area',
+              visible: true,
+              name: '1B 2B 3A 4B',
+              data: [1, 1, 1, 1, 1, 1, 0],
+              pointPlacement: 'on',
+              color: 'rgba(79, 102, 80, 0.5)',
+              dashStyle: "Dot"
+            }]
+        });
+    });
+    })(jQuery);
+  </script>
+
+  <script src="js/scrollify.min.js"></script>
+  <script src="js/scripts.min.js"></script>
+  <script src="js/main.min.js"></script>
+  </body>
+</html>

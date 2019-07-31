@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <title>Contact Us</title>    
+    <meta name="description" content="COMUSIC. an ongoing project created with the aim of studying patterns and characteristics of musical collaborative networks."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Mariana O. S. Silva"/>
+
+    <!-- favicon -->
+    <link href="img/favicon.png" rel=icon>
+
+    <!-- web-fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/styles-merged.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <!-- START: nav -->  
+  <div class="probootstrap-loader"></div>
+  <header class="probootstrap-header">
+    <div class="container">
+        <a href="index.html" class="probootstrap-logo">Comusic.</a>        
+        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+        <div class="mobile-menu-overlay"></div>
+        <nav class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="network.html">Network</a></li>
+            <li><a href="visualizations.html">Visualizations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="extra-text visible-xs"> 
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+          </div>
+        </nav>
+    </div>
+  </header>
+  <!-- END: nav -->
+  
+  <!-- START: header -->
+  <section class="probootstrap-slider text-center flexslider">
+    <div class="hero-wrap js-fullheight">
+      <ul class="slides">
+        <div class="overlay">
+        <div id="particles-js"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-20">
+            <div class="slides-text probootstrap-animate" data-animate-effect="fadeIn">
+                <h2>Contact Us</h2>
+            </div>
+            </div>
+          </div>      
+          <a href="#section-intro" class="scroll" alt=""></a>
+        </div>
+        </div>
+      </ul>
+    </div>
+  </section> 
+  <!-- END: slider  -->
+
+  <section class="probootstrap-section" id="section-intro">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 probootstrap-animate overlap">
+          <form name="htmlform" action="html_form_send.php" method="post" class="probootstrap-form probootstrap-form-box mb60">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fname">First Name <b style="color:#9befe0">*</b></label>
+                  <input type="text" class="form-control" id="fname" name="fname">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="lname">Last Name <b style="color:#9befe0">*</b></label>
+                  <input type="text" class="form-control" id="lname" name="lname">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email <b style="color:#9befe0">*</b></label>
+              <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea cols="30" rows="10" class="form-control" id="message" name="message"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Send Message">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3 col-md-push-1 probootstrap-animate">
+          <h4>Contact Details</h4>
+          <ul class="with-icon colored">
+            <li><i class="icon-location2"></i> <span>Av. Antônio Carlos, 6627 - Pampulha, Belo Horizonte - MG,<br>Brazil - CEP 31270-010</span></li>
+            <li><i class="icon-location"></i> <span>Departamento de Ciência da Computação - Universidade Federal de Minas Gerais (UFMG)<br>ICEX - Anexo U, room 3309</span></li>
+            <li><i class="icon-profile-female"></i><a href="http://homepages.dcc.ufmg.br/~mariana.santos/">Mariana O. S. Silva</a></li>
+            <li><i class="icon-profile-female"></i><a href="http://homepages.dcc.ufmg.br/~laismota/">Laís M. A. Rocha</a></li>
+            <li><i class="icon-profile-female"></i><a href="http://homepages.dcc.ufmg.br/~mirella/">Mirella M. Moro</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>  
+
+  <!-- END section -->
+  
+
+  <footer class="probootstrap-footer probootstrap-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget">
+            <h3>Comusic.</h3>
+            <p>an ongoing project created with the aim of 
+          studying patterns and characteristics of <b>musical collaborative networks.</b></p>
+            <p><a href="about.html" class="btn btn-ghost btn-ghost-white btn-sm">Read more</a></p>
+          </div> 
+        </div>
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h3>Quick Links</h3>
+            <ul class="stack-link">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="network.html">Network</a></li>
+              <li><a href="visualizations.html">Visualizations</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h3>Visualizations</h3>
+            <ul class="stack-link">
+              <li><a href="billboard.html">Billboard Charts</a></li>
+              <li><a href="collab.html">Collaboration Profiles</a></li>
+              <li><a href="cluster.html">Results of Clustering</a></li>
+              <li><a href="statistics.html">Statistical Analysis</a></li>
+            </ul>
+          </div> 
+        </div> 
+      </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <ul class="probootstrap-social">
+              <li><a href="http://www.labcsx.dcc.ufmg.br/doku.php?id=start"><img src="img/logo_lab.svg" alt="labcsx" width="80px" height="100%" /></a></li><li><a href="https://www.dcc.ufmg.br/"><img src="img/dcc.svg" alt="dcc" width="7%"/></a></li>
+              <li><a href="https://ufmg.br/"><img src="img/ufmg.svg" alt="ufmg" width="80px" height="100%"/></a></li>
+              <li><a href="http://www.cnpq.br/"><img src="img/cnpq.svg" alt="cnpq" width="80px" height="100%"/></a></li>
+              <li><a href="http://www.fapemig.br/"><img src="img/fapemig.svg" alt="fapemig" width="70px" height="100%"/></a></li>
+            </ul> 
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="probootstrap-footer">
+            <p>&copy; 2017 <a href="https://uicookies.com/">uiCookies:Virb</a>. Designed by <a href="https://uicookies.com/">uicookies.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+  
+  <script src="js/scrollify.js"></script>
+  <script src="js/scripts.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script src="js/particles.min.js"></script>
+  <script src="js/particle.js"></script>
+
+  <script src="js/custom.js"></script>
+
+  </body>
+</html>

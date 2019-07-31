@@ -35,16 +35,16 @@ Furthermore, our exploratory approach based on collaborative networks can easily
 
 
 
-1. **[Successfull Network]**: Description of the successful musical collaboration network. (343MB) 
-2. **[Billboard & Spotify]**: Description of the successful musical collaboration network. (343MB) 
-3. **[Ego Networks]**: Description of the successful musical collaboration network. (343MB) 
-4. **[Time Series]**: Description of the successful musical collaboration network. (343MB) 
+1. **[Successfull Network]**: The successful musical collaboration network. (8,88 MB) 
+2. **[Billboard Charts]**: Some Billboard Charts data. (3,04 MB) 
+3. **[Ego Networks]**: All the 30 ego networks. (343MB) 
+4. **[Time Series]**: All the time series. (343MB) 
 
 
-[Successfull Network]: https://github.com/marianaossilva/DSW2019/blob/master/docs/assets/data/musicoset.sql
-[Billboard & Spotify]: https://github.com/marianaossilva/DSW2019/blob/master/docs/assets/data/musicoset_metadata.zip
-[Ego Networks]: https://github.com/marianaossilva/DSW2019/blob/master/docs/assets/data/musicoset_popularity.zip
-[Time Series]: https://github.com/marianaossilva/DSW2019/blob/master/docs/assets/data/musicoset_songfeatures.zip
+[Successfull Network]: https://github.com/marianaossilva/Comusic./blob/master/docs/download/netwwork.zip
+[Billboard Charts]: https://github.com/marianaossilva/DSW2019/blob/master/docs/download/billboard.zip
+[Ego Networks]: https://github.com/marianaossilva/DSW2019/blob/master/docs/download/egonetworks.zip
+[Time Series]: https://github.com/marianaossilva/DSW2019/blob/master/docs/download/timeseries.zip
 
 ## The Team
 

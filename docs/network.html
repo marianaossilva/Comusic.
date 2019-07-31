@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <title>The Successful Network</title>    
+    <meta name="description" content="COMUSIC. an ongoing project created with the aim of studying patterns and characteristics of musical collaborative networks."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Mariana O. S. Silva"/>
+
+    <!-- favicon -->
+    <link href="img/favicon.png" rel=icon>
+
+    <!-- web-fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+
+    <link href="numscroller-gh-pages/lib/prism.css" rel="stylesheet" />
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/styles-merged.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <!-- START: nav -->  
+  <div class="probootstrap-loader"></div>
+  <header class="probootstrap-header">
+    <div class="container">
+        <a href="index.html" class="probootstrap-logo">Comusic.</a>        
+        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+        <div class="mobile-menu-overlay"></div>
+        <nav class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="network.html">Network</a></li>
+            <li><a href="visualizations.html">Visualizations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="extra-text visible-xs"> 
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+          </div>
+        </nav>
+    </div>
+  </header>
+  <!-- END: nav -->
+
+  <!-- START: header -->
+  <section class="probootstrap-slider text-center flexslider">
+    <div class="hero-wrap js-fullheight">
+      <ul class="slides">
+        <div class="overlay">
+        <div id="particles-js"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-20">
+            <div class="slides-text probootstrap-animate" data-animate-effect="fadeIn">
+              <h2>The Successful<br> <strong>Network</strong></h2>
+              <a href="network/network.html" class="btn btn-outline-white px-5 py-3">Visualization</a>
+            </div>
+            </div>
+          </div>      
+          <a href="#section-intro" class="scroll" alt=""></a>
+        </div>
+        </div>
+      </ul>
+    </div>
+  </section> 
+  <!-- END: slider  -->
+
+  <section class="probootstrap-section" id="section-intro">
+    <div class="container">
+      <div class="row mb50 probootstrap-animate" data-animate-effect="fadeInLeft">
+        <div class="col-md-6">
+          <p><img alt="Network" src="img/network.svg" class="img-responsive" width="100%" height="100%"></p>
+        </div>
+        <div class="col-md-6">
+          <h2 style="font-size: 3em; color: #0b0b0b;">The Successful Network</h2>
+          <p style="text-align:justify;">In order to model a "successful" network of collaborations, we collected all the artists on <a href="https://www.billboard.com/charts/artist-100">Billboard's Artist 100</a> chart, a weekly ranking that lists the top 100 artists. In total, we collect <mark>211</mark> rankings between 2014 (July 26, 2014) and 2018 (July 28, 2018). As each chart consists of 100 artists' names, we collected <mark>21,100</mark> artists' names in total, which were deduplicated to achieve 1,135 distinct names.</p>
+
+          <p style="text-align:justify;">For more information on each artist, we also collected data from <a href="https://www.spotify.com/">Spotify</a>, one of the most popular and used music streaming platforms. Then, for each artist collected on the Billboard chart, we also collected features and her/his ten most popular songs. In the same way, the artists (and their features) that collaborate in the execution of the top 10 songs were also collected. Therefore, the total number of artists grew to <mark>2,152</mark>.</p>
+        </div>
+      </div>
+      <div class="row mb50 probootstrap-animate" data-animate-effect="fadeInRight">
+        <div class="col-md-6 col-md-push-6">
+          <p><img src="img/bipartite.jpg" alt="bipartite" class="img-responsive" width="100%" height="100%"></p>
+        </div>
+         <div class="col-md-6 col-md-pull-6 text-right">
+          <h2 style="font-size: 2em; color: #0b0b0b;">Modelling</h2>
+          <p style="text-align:justify;">To model the music collaboration network, we collected all the artists who participated in the execution of a single &mdash; either as participation (featuring) or collaboration (with). The dataset was modeled as a bipartite graph with nodes for a set of songs and a set of artists, and edges connecting the individuals who collaborated in the execution of each song. </p>
+
+          <p style="text-align:justify;">In the bipartite graph, there are two groups of nodes: (S) the set of songs; (A) set of successful artists who collaborated in the execution of the songs present in S. The bipartite model was then designed as a unimodal non-directed graph: every two nodes in A are connected by a link if they are connected to the corresponding node in S (in the bipartite representation). In other words, only artists are present as nodes, and edges exist between artists who worked on the same song in such a projection. In addition, songs that do not have more than one artist in their execution are modeled as self-loops on the artist's node.</p>
+        </div>
+      </div>
+      <div class="row mb50 probootstrap-animate" data-animate-effect="fadeInLeft">
+        <div class="col-md-6">
+          <p><img src="img/filtering.jpg" alt="Filtering" class="img-responsive" width="100%" height="100%"></p>
+        </div>
+        <div class="col-md-6">
+          <h2 style="font-size: 2em; color: #0b0b0b;">Filtering</h2>
+          <p style="text-align:justify;">Finally, we perform a network filtering for keeping the network into a processable size and getting rid of potential outliers. Therefore, the network includes only artists with a popularity rating greater or equal than <mark>70</mark>, and at least <mark>1,000,000</mark> followers. Below, we present some statistics of the originally collected network and the new, filtered one.</p>
+         </div>
+      </div>
+      <div class="col text-center probootstrap-animate">
+          <p><a href="network/network.html" class="btn btn-primary py-3 px-5">Interactive Visualization</a></p>
+      </div>
+    </div>
+  </section>
+
+    <section class="probootstrap-section ftco-counter">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center section-heading probootstrap-animate">
+          <h2 style="color: #FFFFFF;">Networks' Statistics</h2>
+          <h3 style="font-size: 1.5em; color: #9befe0;">Original Network</h3>
+        </div>
+        <div class="col-md-4 text-center justify-content-center">          
+          <div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='2152' data-delay='10' data-increment="40">0</div>
+          <div class='numscroller-info-top'>Successful musical artists</div>
+        </div>
+        <div class="col-md-4 text-center justify-content-center">          
+          <div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='10706' data-delay='10' data-increment="200">0</div>
+          <div class='numscroller-info-top'>Hit songs</div>
+        </div>
+        <div class="col-md-4 text-center justify-content-center">
+          <div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='922' data-delay='10' data-increment="50">0</div>
+          <div class='numscroller-info-top'>Musical collaborations</div>
+        </div>
+      </div>
+      <!--- --->
+      <div class="row">
+        <div class="col-md-12 text-center probootstrap-animate">
+          <h3 style="font-size: 1.5em; color: #9befe0;">Filtered Network</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 text-center justify-content-center">          
+          <div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='354' data-delay='40' data-increment="30">0</div>
+          <div class='numscroller-info-top'>Successful musical artists</div>
+        </div>
+        <div class="col-md-4 text-center justify-content-center">          
+          <div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='2144' data-delay='40' data-increment="100">0</div>
+          <div class='numscroller-info-top'>Hit songs</div>
+        </div>
+        <div class="col-md-4 text-center justify-content-center">          
+          <div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='922' data-delay='40' data-increment="50">0</div>
+          <div class='numscroller-info-top'>Musical collaborations</div>
+        </div>
+      </div>
+    </div>
+    <div class='clear'></div>
+  </section>
+
+  <section class="probootstrap-section probootstrap-section-lighter">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center section-heading probootstrap-animate">
+          <h2>Downloads</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 text-center probootstrap-animate">
+          <p><a href="download/network.zip" class="btn btn-primary py-3 px-5" download> <i class="icon-file-zip"></i> Database</a></p> 
+        </div>
+        <div class="col-md-4 text-center probootstrap-animate">
+          <p><a href="https://dl.acm.org/citation.cfm?doid=3297280.3297483" class="btn btn-primary py-3 px-5" download> <i class="icon-document2"></i> Paper</a></p> 
+        </div>
+        <div class="col-md-4 text-center probootstrap-animate">
+          <p><a href="download/presentation.pdf" class="btn btn-primary py-3 px-5" download> <i class="icon-presentation"></i> Presentation</a></p> 
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- END section -->
+
+  <footer class="probootstrap-footer probootstrap-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget">
+            <h3>Comusic.</h3>
+            <p>an ongoing project created with the aim of 
+          studying patterns and characteristics of <b>musical collaborative networks.</b></p>
+            <p><a href="about.html" class="btn btn-ghost btn-ghost-white btn-sm">Read more</a></p>
+          </div> 
+        </div>
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h3>Quick Links</h3>
+            <ul class="stack-link">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="network.html">Network</a></li>
+              <li><a href="visualizations.html">Visualizations</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h3>Visualizations</h3>
+            <ul class="stack-link">
+              <li><a href="billboard.html">Billboard Charts</a></li>
+              <li><a href="collab.html">Collaboration Profiles</a></li>
+              <li><a href="cluster.html">Results of Clustering</a></li>
+              <li><a href="statistics.html">Statistical Analysis</a></li>
+            </ul>
+          </div> 
+        </div> 
+      </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <ul class="probootstrap-social">
+              <li><a href="http://www.labcsx.dcc.ufmg.br/doku.php?id=start"><img src="img/logo_lab.svg" alt="labcsx" width="80px" height="100%" /></a></li><li><a href="https://www.dcc.ufmg.br/"><img src="img/dcc.svg" alt="dcc" width="7%"/></a></li>
+              <li><a href="https://ufmg.br/"><img src="img/ufmg.svg" alt="ufmg" width="80px" height="100%"/></a></li>
+              <li><a href="http://www.cnpq.br/"><img src="img/cnpq.svg" alt="cnpq" width="80px" height="100%"/></a></li>
+              <li><a href="http://www.fapemig.br/"><img src="img/fapemig.svg" alt="fapemig" width="70px" height="100%"/></a></li>
+            </ul> 
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="probootstrap-footer">
+            <p>&copy; 2017 <a href="https://uicookies.com/">uiCookies:Virb</a>. Designed by <a href="https://uicookies.com/">uicookies.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop" alt=""><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+  <script src="js/numscroller-gh-pages/lib/jquery-1.10.2.min.js"></script>
+  <script src="js/numscroller-gh-pages/numscroller-1.0.js"></script>
+  <script src="js/numscroller-gh-pages/lib/prism.js"></script>
+
+  <script src="js/scrollify.js"></script>
+  <script src="js/scripts.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/particles.min.js"></script>
+  <script src="js/particle.js"></script>
+
+  </body>
+</html>
