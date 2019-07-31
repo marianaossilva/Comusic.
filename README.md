@@ -33,13 +33,10 @@ Furthermore, our exploratory approach based on collaborative networks can easily
 
 ## Datasets
 
-
-
 1. **[Successfull Network]**: The successful musical collaboration network. (8,88 MB) 
 2. **[Billboard Charts]**: Some Billboard Charts data. (3,04 MB) 
 3. **[Ego Networks]**: All the 30 ego networks. (343MB) 
 4. **[Time Series]**: All the time series. (343MB) 
-
 
 [Successfull Network]: https://github.com/marianaossilva/Comusic./blob/master/docs/download/netwwork.zip
 [Billboard Charts]: https://github.com/marianaossilva/DSW2019/blob/master/docs/download/billboard.zip
