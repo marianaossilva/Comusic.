@@ -8,22 +8,18 @@
 
 ## About Comusic
 
-<img src="docs/img/comusic.jpg" align="left" />
 Comusic is an ongoing project that seeks to study the impact of collaboration networks' topological features on *musical success*. To that end, we analyze and identify such characterizations in a musical success-based network; that is, a network composed only of successful artists. Our findings offer a *new perspective on success* in the music industry, unraveling how collaboration profiles can contribute to an artist's popularity.
 
 ## Our Methodology
 
-<img src="docs/img/comusic.jpg" align="left" />
 Initially, using data from Billboard and the Spotify platform, we model a *"successful" collaborative network* and apply tools of network science to study its structure. By means of topological metrics, we defined four categories of *collaboration profiles* and, applying a clustering algorithm, we identified three communities with different collaboration patterns and notable discrepancies in musical success levels. Then, we conduct a statistical correlation analysis to evaluate the correlation between collaboration profiles and the artist's success.
 
 ## Our Findings
 
-<img src="docs/img/comusic.jpg" align="left" />
 By detecting cluster and their respective *patterns of network collaboration*, we focus on analyzing the impact of these profiles on successful musical artists. Considering topological metrics, we define four main categories of collaboration profiles: **Interaction**, **Distance**, **Influence** and **Similarity**. Among them, we find that the first three affect musical success more intensely than **Similarity**.
 
 ## Our Contributions
 
-<img src="docs/img/comusic.jpg" align="left" />
 Our findings provide evidence that: 
 
 * there are indeed *distinct success factors* for music collaboration profiles that are socially measurable, and 
