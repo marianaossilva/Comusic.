@@ -1,8 +1,10 @@
 <img src="icon.png" align="right" />
 
-# [COMUSIC.][Comusic.] - Good things come to those who collaborate ![GitHub repo size](https://img.shields.io/github/repo-size/marianaossilva/Comusic..svg?color=d43f3a)
+# [COMUSIC.][Comusic.] ![GitHub repo size](https://img.shields.io/github/repo-size/marianaossilva/Comusic..svg?color=d43f3a)
 
 [Comusic.]: https://marianaossilva.github.io/Comusic.
+
+> Good things come to those who collaborate
 
 ## About Comusic
 
