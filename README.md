@@ -1,10 +1,8 @@
 <img src="icon.png" align="right" />
 
-# DSW 2019 - DATASET SHOWCASE WORKSHOP ![GitHub repo size](https://img.shields.io/github/repo-size/marianaossilva/Comusic..svg?color=d43f3a)
+# [COMUSIC.][Comusic.] - Good things come to those who collaborate ![GitHub repo size](https://img.shields.io/github/repo-size/marianaossilva/Comusic..svg?color=d43f3a)
 
 [Comusic.]: https://marianaossilva.github.io/Comusic.
-
-> [COMUSIC.][Comusic.] - Good things come to those who collaborate
 
 ## About Comusic
 
